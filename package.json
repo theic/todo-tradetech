@@ -1,0 +1,81 @@
+{
+  "name": "todo-tradetech-interview",
+  "version": "1.0.0",
+  "description": "Simple todo application.",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "build": "node esbuild.config.mjs",
+    "dev": "nodemon src/index.ts --monitor",
+    "debug": "node --inspect -r dotenv/config -r tsconfig-paths/register -r ts-node/register/transpile-only src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Serhii L",
+  "license": "ISC",
+  "dependencies": {
+    "inversify": "^6.0.2",
+    "inversify-express-utils": "^6.4.6"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "esbuild": "^0.16.17",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "airbnb-typescript/base",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript",
+      "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ],
+        "parserOptions": {
+          "sourceType": "module",
+          "project": [
+            "./tsconfig.json"
+          ]
+        }
+      }
+    ],
+    "ignorePatterns": [
+      "/lib/**/*"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "import"
+    ],
+    "rules": {
+      "prettier/prettier": "warn",
+      "no-underscore-dangle": "off",
+      "import/no-named-as-default": "off",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/require-await": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "lib",
+    "strict": false,
+    "baseUrl": "src",
+    "paths": {
+      "@config/*": ["config/*"],
+      "@infrastructure/*": ["infrastructure/*"],
+      "@domain/*": ["domain/*"]
+    }
+  },
+  "include": ["src"]
+}
