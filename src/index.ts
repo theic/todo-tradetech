@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import 'reflect-metadata';
 import cluster from 'node:cluster';
 import { cpus } from 'node:os';

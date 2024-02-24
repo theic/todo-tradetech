@@ -1,7 +1,2 @@
-import { Task } from './Task';
-import { TaskRepository } from './TaskRepository';
-
-export {
-  Task,
-  TaskRepository,
-}
+export * from './Task';
+export * from './TaskRepository';

@@ -1,3 +1,5 @@
+import { Task, TaskRepository } from '@domain/Task';
+
 export class FirestoreTaskRepository implements TaskRepository {
   add(task: Task): Promise<void> {
     throw new Error('Method not implemented.');

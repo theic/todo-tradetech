@@ -1,7 +1,2 @@
-import { List } from './List';
-import { ListRepository } from './ListRepository';
-
-export {
-  List,
-  ListRepository
-}
+export * from './List';
+export * from './ListRepository';

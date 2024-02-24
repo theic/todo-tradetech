@@ -16,7 +16,8 @@
     "paths": {
       "@config/*": ["config/*"],
       "@infrastructure/*": ["infrastructure/*"],
-      "@domain/*": ["domain/*"]
+      "@domain/*": ["domain/*"],
+      "@app/*": ["app/*"]
     }
   },
   "include": ["src"]

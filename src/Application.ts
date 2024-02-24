@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { Container, inject } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import express, { Application as ExpressApplication } from 'express';
@@ -12,7 +11,7 @@ class Application {
   @inject(Logger) private logger: Logger;
 
   constructor(container: Container) {
-    this.server = new InversifyExpressServer(container);
+    this.server = new InversifyExpressServer(container, null, { rootPath: 'api/v1' });
     this._nodeEnv = process.env.NODE_ENV || 'development';
     this._logLevel = process.env.LOG_LEVEL || 'info';
 

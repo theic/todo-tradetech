@@ -1,4 +1,4 @@
-import { commonContainer } from './container';
+import { commonContainer } from './commonContainer';
 import { Application } from './Application';
 
 export async function bootstrap() {
