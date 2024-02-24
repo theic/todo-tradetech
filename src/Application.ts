@@ -21,6 +21,7 @@ class Application {
   private setupServer(): void {
     this.server.setConfig((app: ExpressApplication) => {
       app.use(express.json());
+      app.use(express.urlencoded({ extended: true }));
     });
 
     this.server.setErrorConfig((app: ExpressApplication) => {
