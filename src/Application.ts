@@ -1,4 +1,4 @@
-import { Container, inject } from 'inversify';
+import { Container, inject, injectable } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import express, {
   Application as ExpressApplication,
@@ -7,20 +7,19 @@ import express, {
   NextFunction,
 } from 'express';
 import { Logger } from './infrastructure/logging/Logger';
+import { ServerConfig } from '@config/server';
 
+@injectable()
 class Application {
   private server: InversifyExpressServer;
-  private readonly _nodeEnv: string;
-  private readonly _logLevel: string;
 
   @inject(Logger) private logger: Logger;
+  @inject(ServerConfig) private readonly config: ServerConfig;
 
-  constructor(container: Container) {
+  public setup(container: Container) {
     this.server = new InversifyExpressServer(container, null, { rootPath: 'api/v1' });
-    this._nodeEnv = process.env.NODE_ENV || 'development';
-    this._logLevel = process.env.LOG_LEVEL || 'info';
-
     this.setupServer();
+    return this;
   }
 
   private setupServer(): void {
@@ -49,16 +48,19 @@ class Application {
     });
   }
 
-  get nodeEnv(): string {
-    return this._nodeEnv;
+  public async start(): Promise<void> {
+    await new Promise<void>(resolve =>
+      this.server
+        .build()
+        .listen({ port: this.config.port }, () => {
+          console.log(`Server running in ${this.config.nodeEnv} mode on port ${this.config.port}`);
+          resolve();
+        }),
+    );
   }
 
   private isProductionEnv(): boolean {
-    return this._nodeEnv === 'production';
-  }
-
-  public build(): ExpressApplication {
-    return this.server.build();
+    return this.config.nodeEnv === 'production';
   }
 }
 
