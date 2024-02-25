@@ -1,6 +1,11 @@
 import { Container, inject } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
-import express, { Application as ExpressApplication } from 'express';
+import express, {
+  Application as ExpressApplication,
+  Request,
+  Response,
+  NextFunction,
+} from 'express';
 import { Logger } from './infrastructure/logging/Logger';
 
 class Application {
@@ -28,9 +33,9 @@ class Application {
       app.use(
         (
           err: Error,
-          _req: express.Request,
-          res: express.Response,
-          _next: express.NextFunction,
+          _req: Request,
+          res: Response,
+          _next: NextFunction,
         ) => {
           const message = err.message || 'Internal server error!';
 
