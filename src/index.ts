@@ -1,27 +1,35 @@
 import 'reflect-metadata';
 import 'dotenv/config';
-
-// dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-
 import cluster from 'node:cluster';
 import { cpus } from 'node:os';
 import process from 'node:process';
 import { bootstrap } from './Bootstrap';
 
-const numCPUs = cpus().length;
+const runCluster = () => {
+    if (cluster.isPrimary) {
+        console.log(`Master ${process.pid} is running`);
 
-if (cluster.isPrimary && process.env.NODE_MODE === 'cluster') {
-  console.log(`Primary ${process.pid} is running`);
+        for (const _ of cpus()) {
+            cluster.fork();
+        }
 
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
+        cluster.on('exit', (worker, _code, _signal) => {
+            console.log(`Worker ${worker.process.pid} died`);
+        });
+    } else {
+        bootstrap().then(() => {
+          console.log(`Worker ${process.pid} started`);
+        });
+    }
+};
 
-  cluster.on('exit', (worker, _code, _signal) => {
-    console.log(`worker ${worker.process.pid} died`);
-  });
+const runSingleInstance = () => {
+    bootstrap();
+    console.log(`Single instance running on ${process.pid}`);
+};
+
+if (process.env.NODE_MODE === 'cluster') {
+    runCluster();
 } else {
-  bootstrap().then(() => {
-    console.log(`Worker ${process.pid} started`);
-  });
+    runSingleInstance();
 }
