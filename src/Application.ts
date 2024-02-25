@@ -6,7 +6,7 @@ import express, {
   Response,
   NextFunction,
 } from 'express';
-import { Logger } from './infrastructure/logging/Logger';
+import { Logger } from '@infrastructure/logging/Logger';
 import { ServerConfig } from '@config/server';
 
 @injectable()
