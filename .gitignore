@@ -41,3 +41,6 @@ firebase-debug.*.log*
 
 # Firebase runtime config
 .runtimeconfig.json
+
+# GCP config
+.gcloud
