@@ -34,8 +34,11 @@ Create a `.env` file at the root directory of the project. Use the provided `.en
 
 To test the application's routes, use the `ENDPOINTS.http` file located in the root directory. The testing requires the [Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension to function.
 
+###### signIn & signUp
 ![authentication](./public/auth.gif)
 
+###### lists
 ![lists](./public/lists.gif)
 
+###### tasks
 ![tasks](./public/tasks.gif)
