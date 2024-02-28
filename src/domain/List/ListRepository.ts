@@ -1,9 +1,10 @@
 import { List } from './List';
 
 export interface ListRepository {
-    add(list: List): Promise<void>;
-    findById(id: string): Promise<List | null>;
-    update(list: List): Promise<void>;
+  save(list: List): Promise<void>;
+  findForUser(userId: string): Promise<List[]>;
+  get(id: string): Promise<List | undefined>;
+  delete(id: string): Promise<void>;
 }
 
 export const ListRepository = Symbol('ListRepository');
