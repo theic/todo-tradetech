@@ -8,6 +8,8 @@ import express, {
 } from 'express';
 import { Logger } from '@infrastructure/logging/Logger';
 import { ServerConfig } from '@config/server';
+import cors from 'cors';
+import { AppError } from '@domain/exceptions';
 
 @injectable()
 class Application {
@@ -17,7 +19,9 @@ class Application {
   @inject(ServerConfig) private readonly config: ServerConfig;
 
   public setup(container: Container) {
-    this.server = new InversifyExpressServer(container, null, { rootPath: 'api/v1' });
+    this.server = new InversifyExpressServer(
+      container,
+    );
     this.setupServer();
     return this;
   }
@@ -26,6 +30,9 @@ class Application {
     this.server.setConfig((app: ExpressApplication) => {
       app.use(express.json());
       app.use(express.urlencoded({ extended: true }));
+      app.use(cors());
+      app.use(express.static('public'));
+      app.set('x-powered-by', 0);
     });
 
     this.server.setErrorConfig((app: ExpressApplication) => {
@@ -37,12 +44,13 @@ class Application {
           _next: NextFunction,
         ) => {
           const message = err.message || 'Internal server error!';
+          const status = err instanceof AppError ? err.httpCode : 500;
 
           this.logger.error(
             this.isProductionEnv ? message : err.stack || message,
           );
 
-          res.status(500).send(message);
+          res.status(status).send(message);
         },
       );
     });
