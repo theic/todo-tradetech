@@ -3,6 +3,7 @@ import { UserRepository } from '@domain/User';
 import { BaseMiddleware } from 'inversify-express-utils';
 import { inject, injectable } from 'inversify';
 import { auth } from 'firebase-admin';
+import { Logger } from '@infrastructure/logging/Logger';
 
 @injectable()
 export class AuthenticationMiddleware extends BaseMiddleware {
@@ -11,6 +12,8 @@ export class AuthenticationMiddleware extends BaseMiddleware {
   constructor(
     @inject(UserRepository)
     private readonly userRepository: UserRepository,
+    @inject(Logger)
+    private readonly logger: Logger,
   ) {
     super();
     this.auth = auth();
@@ -23,8 +26,6 @@ export class AuthenticationMiddleware extends BaseMiddleware {
   ) {
     try {
       const { authorization } = req.headers;
-
-      console.log('authorization', authorization);
 
       const { 1: token } = authorization.split('Bearer ');
 
@@ -41,7 +42,7 @@ export class AuthenticationMiddleware extends BaseMiddleware {
 
       res.locals = { user };
     } catch (err) {
-      console.error(err);
+      this.logger.error(err);
       res.sendStatus(401);
     }
     next();

@@ -19,7 +19,6 @@ export class FirestoreListRepository implements ListRepository {
   }
 
   public async save(list: List): Promise<void> {
-    console.log('list', list);
     await this.db
       .collection('lists')
       .doc(list.id)

@@ -61,7 +61,9 @@ class Application {
       this.server
         .build()
         .listen({ port: this.config.port }, () => {
-          console.log(`Server running in ${this.config.nodeEnv} mode on port ${this.config.port}`);
+          this.logger.log(
+            `Server running in ${this.config.nodeEnv} mode on port ${this.config.port}`
+          );
           resolve();
         }),
     );
