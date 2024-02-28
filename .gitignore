@@ -18,9 +18,6 @@ build/
 .env.development
 .env.production
 
-# Ignore package-lock.json for npm
-package-lock.json
-
 # Ignore .DS_Store files on Mac
 .DS_Store
 
