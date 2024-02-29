@@ -10,7 +10,7 @@ import {
   FirestoreTaskRepository,
   FirestoreUserRepository,
 } from '@infrastructure/repositories';
-import { Application } from 'Application';
+import { Application } from './Application';
 import { Container } from 'inversify';
 
 const container = new Container();

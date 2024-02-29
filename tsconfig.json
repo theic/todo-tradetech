@@ -13,13 +13,12 @@
     "sourceMap": true,
     "outDir": "lib",
     "strict": false,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@config/*": ["config/*"],
-      "@infrastructure/*": ["infrastructure/*"],
-      "@domain/*": ["domain/*"],
-      "@app/*": ["app/*"]
+      "@config/*": ["src/config/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
+      "@domain/*": ["src/domain/*"],
+      "@app/*": ["src/app/*"]
     }
-  },
-  "include": ["src"]
+  }
 }

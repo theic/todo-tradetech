@@ -12,7 +12,7 @@ import cors from 'cors';
 import { AppError } from '@domain/exceptions';
 
 @injectable()
-class Application {
+export class Application {
   private server: InversifyExpressServer;
 
   @inject(Logger) private logger: Logger;
@@ -73,5 +73,3 @@ class Application {
     return this.config.nodeEnv === 'production';
   }
 }
-
-export { Application };
