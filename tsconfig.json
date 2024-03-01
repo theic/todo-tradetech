@@ -1,7 +1,9 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
-    "lib": ["es2022"],
+    "lib": [
+      "es2022"
+    ],
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -15,10 +17,24 @@
     "strict": false,
     "baseUrl": ".",
     "paths": {
-      "@config/*": ["src/config/*"],
-      "@infrastructure/*": ["src/infrastructure/*"],
-      "@domain/*": ["src/domain/*"],
-      "@app/*": ["src/app/*"]
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@infrastructure/*": [
+        "src/infrastructure/*"
+      ],
+      "@domain/*": [
+        "src/domain/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ]
     }
-  }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
