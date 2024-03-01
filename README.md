@@ -30,7 +30,15 @@ npm run start
 
 Create a `.env` file at the root directory of the project. Use the provided `.env.example` as a reference for the necessary configurations.
 
-## Test
+## Tests
+
+Run the tests with the following command:
+
+```bash
+npm run test
+```
+
+## Demonstration
 
 To test the application's routes, use the `ENDPOINTS.http` file located in the root directory. The testing requires the [Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension to function.
 
