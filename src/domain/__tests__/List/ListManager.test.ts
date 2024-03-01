@@ -1,6 +1,6 @@
 import { mock } from 'jest-mock-extended';
 import { v4 as uuid } from 'uuid';
-import { DefaultListManager, List, ListManager, ListRepository, UpdateListData } from '../../List';
+import { DefaultListManager, ListManager, ListRepository, UpdateListData } from '../../List';
 import { MemoryListRepository } from './MemoryListRepository';
 
 export type ListRepositoryMock = jest.Mocked<ListRepository>;
@@ -31,16 +31,17 @@ describe('ListManager', () => {
 
   it('should update an existing list', async () => {
     const data = generateListMock('List update');
-    const existingList = new List(data);
+    const existingList = await listManager.create(data);
     const updatedData: UpdateListData = { title: 'New List' };
 
-    existingList.updateDetails = jest.fn();
+    jest.spyOn(existingList, 'updateDetails');
 
     await listManager.update(existingList, updatedData);
 
-    // const updatedList = await listRepositoryMock.get(existingList.id);
+    const updatedList = await listRepositoryMock.get(existingList.id);
 
     expect(existingList.updateDetails).toHaveBeenCalledWith(updatedData);
+    expect(updatedList.title).toBe(updatedData.title);
   });
 
   it('should delete a list', async () => {
