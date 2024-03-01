@@ -43,10 +43,11 @@ npm run test
 To test the application's routes, use the `ENDPOINTS.http` file located in the root directory. The testing requires the [Rest Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension to function.
 
 ###### signIn & signUp
-![authentication](./public/auth.gif)
+![auth](https://s9.gifyu.com/images/SF17B.gif)
 
-###### lists
-![lists](./public/lists.gif)
+###### List management
+![lists](https://s9.gifyu.com/images/SF17O.gif)
 
-###### tasks
-![tasks](./public/tasks.gif)
+###### Task management
+
+![](https://s9.gifyu.com/images/SF17y.gif)
