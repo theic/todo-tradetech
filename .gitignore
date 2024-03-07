@@ -22,7 +22,7 @@ build/
 .DS_Store
 
 # Compiled JavaScript files
-/lib/
+/build/
 
 # Except the ESLint config file
 !.eslintrc.js
@@ -41,3 +41,6 @@ firebase-debug.*.log*
 
 # GCP config
 .gcloud
+
+# Local data
+.turbo

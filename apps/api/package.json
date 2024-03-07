@@ -1,0 +1,123 @@
+{
+  "name": "todo-tradetech-interview",
+  "version": "1.0.0",
+  "description": "Simple todo application.",
+  "main": "build/index.js",
+  "scripts": {
+    "dev": "node build/index.js",
+    "build": "node esbuild.config.mjs",
+    "test": "jest",
+    "jest:clear": "jest --clearCache"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Serhii L",
+  "license": "ISC",
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "firebase-admin": "^12.0.0",
+    "inversify": "^6.0.2",
+    "inversify-express-utils": "^6.4.6",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/prettyjson": "^0.0.33",
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "esbuild": "^0.16.17",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.7.0",
+    "jest-mock-extended": "^3.0.5",
+    "nodemon": "^2.0.15",
+    "prettyjson": "^1.2.5",
+    "reflect-metadata": "^0.2.1",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.6.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "airbnb-typescript/base",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript",
+      "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ],
+        "parserOptions": {
+          "sourceType": "module",
+          "project": [
+            "./tsconfig.json"
+          ]
+        }
+      }
+    ],
+    "ignorePatterns": [
+      "/build/**/*"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "import"
+    ],
+    "rules": {
+      "prettier/prettier": "warn",
+      "no-underscore-dangle": "off",
+      "import/no-named-as-default": "off",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/require-await": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/src/**/*.test.(ts)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "node_modules"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "modulePaths": [
+      "<rootDir>"
+    ]
+  }
+}

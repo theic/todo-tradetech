@@ -4,6 +4,6 @@ await esbuild.build({
   entryPoints: ['src/index.ts'],
   bundle: true,
   platform: 'node',
-  outfile: 'lib/index.js',
+  outfile: 'build/index.js',
   external: ['node-gyp-build'],
 })
