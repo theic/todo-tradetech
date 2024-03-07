@@ -2,6 +2,7 @@ import { Task } from '@domain/Task';
 
 export class TaskOutput {
   public readonly id: string;
+  public readonly listId: string;
   public readonly description: string;
   public readonly status: string;
   public readonly createdAt: Date;
@@ -13,6 +14,7 @@ export class TaskOutput {
 
   static fromTask({
     id,
+    listId,
     description,
     status,
     createdAt,
@@ -20,6 +22,7 @@ export class TaskOutput {
   }: Task) {
     return new TaskOutput({
       id,
+      listId,
       description,
       status,
       createdAt,
