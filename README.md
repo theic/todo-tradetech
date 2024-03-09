@@ -24,7 +24,7 @@ To run the application, execute the following commands:
 ```bash
 npm ci
 npm run build
-npm run start
+npm run dev
 ```
 
 ## Configuration
