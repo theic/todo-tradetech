@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { TaskStatus } from '../../domain';
+import { TaskStatus } from '../../domain/Task';
 import { useListService, useTaskService } from '../../infrastructure/services';
 import { useUser } from '../User/UserProvider';
-import { useListStore } from '../../infrastructure/store/ListStore';
+import { useListStore } from '../../infrastructure/store';
 import ListView from './ListView';
+import { List } from 'src/domain/List';
 
 export function ListContainerView() {
   const { user, logout } = useUser();
@@ -126,7 +127,7 @@ export function ListContainerView() {
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {lists ? (
           <ul>
-            {lists.map((list) => (
+            {lists.map((list: List) => (
               <ListView
                 key={list.id}
                 list={list}

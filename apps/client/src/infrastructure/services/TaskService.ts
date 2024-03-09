@@ -1,4 +1,9 @@
-import { CreateTaskType, DeleteTaskType, TaskServiceType, UpdateTaskType } from '../../application/Task/TaskServiceType';
+import {
+  CreateTaskType,
+  DeleteTaskType,
+  TaskServiceType,
+  UpdateTaskType,
+} from '../../application/Task';
 import { Task } from '../../domain/Task';
 import { BaseService } from './BaseService';
 

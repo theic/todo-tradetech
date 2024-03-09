@@ -1,5 +1,5 @@
 import { List } from './List';
-import { Task } from '../Task/Task';
+import { Task } from '../Task';
 
 export type ListStoreType = {
   lists: List[];

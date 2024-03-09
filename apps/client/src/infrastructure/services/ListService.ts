@@ -1,5 +1,10 @@
-import { CreateListType, DeleteListType, ListServiceType, UpdateListType } from '../../application/List/ListServiceType';
-import { List } from '../../domain';
+import {
+  CreateListType,
+  DeleteListType,
+  ListServiceType,
+  UpdateListType,
+} from '../../application/List';
+import { List } from '../../domain/List';
 import { BaseService } from './BaseService';
 
 export function useListService(): ListServiceType {

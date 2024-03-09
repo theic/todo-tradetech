@@ -1,7 +1,6 @@
 import { FC, createContext, useContext, useEffect, useState } from 'react';
-import { setupTokenInterceptor } from '../../infrastructure/services/BaseService';
-import { User } from '../../domain';
-import { useUserService } from '../../infrastructure/services/UserService';
+import { User } from '../../domain/User';
+import { setupTokenInterceptor, useUserService } from '../../infrastructure/services';
 import { useUserStore } from '../../infrastructure/store';
 
 interface UserContextValue {

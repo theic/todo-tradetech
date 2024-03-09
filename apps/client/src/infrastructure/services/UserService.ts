@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {BaseService} from './BaseService';
-import { UserServiceType } from '../../application/User/UserServiceType';
+import { BaseService } from './BaseService';
+import { UserServiceType } from '../../application/User';
 
 const signInWithCustomTokenUrl = process.env.REACT_APP_GOOGLE_CUSTOM_TOKEN_URL;
 const tokenUrl = process.env.REACT_APP_GOOGLE_TOKEN_URL;

@@ -1,6 +1,7 @@
 import './App.css';
-import { UserProvider } from './application/User/UserProvider';
-import ListContainerView from './application/List/ListContainerView';
+import { UserProvider } from './application/User';
+import { ListContainerView } from './application/List';
+import React from 'react';
 
 function App() {
   return (

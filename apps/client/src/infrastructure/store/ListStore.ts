@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { List, Task, ListStoreType } from '../../domain';
+import { List, ListStoreType } from '../../domain/List';
+import { Task } from '../../domain/Task';
 
 export function useListStore(): ListStoreType {
   const [lists, setLists] = useState<List[]>([]);

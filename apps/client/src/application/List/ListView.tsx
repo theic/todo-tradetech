@@ -2,7 +2,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import TaskDetails from '../Task/TaskView';
-import { List } from '../../domain';
+import { List } from '../../domain/List';
 
 interface ListViewProps {
   list: List,
