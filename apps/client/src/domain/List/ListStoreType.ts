@@ -3,6 +3,7 @@ import { Task } from '../Task';
 
 export type ListStoreType = {
   lists: List[];
+  setLists: (lists: List[]) => void;
   getLists: () => List[];
   addList: (list: List) => void;
   removeList: (listId: string) => void;

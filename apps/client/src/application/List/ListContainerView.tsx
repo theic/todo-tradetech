@@ -11,6 +11,7 @@ export function ListContainerView() {
   const [isLoading, setIsLoading] = useState(false);
   const {
     lists,
+    setLists,
     addList,
     removeList,
     updateList,
@@ -24,12 +25,22 @@ export function ListContainerView() {
   const taskService = useTaskService();
 
   useEffect(() => {
-    if (user?.idToken) {
-      listService.getLists().then((lists) => {
-        lists.forEach((list) => addList(list));
-      });
+    if (!user?.idToken) {
+      return;
     }
+    refreshLists();
   }, [user?.idToken])
+
+  async function refreshLists() {
+    setIsLoading(true);
+    try {
+      const lists = await listService.getLists();
+      setLists(lists);
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   async function handleCreateList() {
     setNewListTitle('');

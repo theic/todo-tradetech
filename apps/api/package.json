@@ -4,7 +4,7 @@
   "description": "Simple todo application.",
   "main": "build/index.js",
   "scripts": {
-    "dev": "node build/index.js",
+    "dev": "node build/index.js --preserveWatchOutput",
     "build": "node esbuild.config.mjs",
     "test": "jest",
     "jest:clear": "jest --clearCache"

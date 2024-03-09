@@ -7,6 +7,7 @@ export function useListStore(): ListStoreType {
 
   return {
     lists,
+    setLists,
     getLists: () => lists,
     addList: (list: List) => {
       setLists([...lists, list]);
