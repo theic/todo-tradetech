@@ -11,7 +11,6 @@ export function useUserService(): UserServiceType {
     createUser: async () => {
       try {
         const response = await BaseService.post('/users/create');
-        console.log('createUser', response.data.token);
         return response.data.token;
       } catch (error) {
         console.error('Error fetching custom token:', error);
@@ -24,7 +23,6 @@ export function useUserService(): UserServiceType {
           `${signInWithCustomTokenUrl}?key=${apiKey}`,
           { token: customToken, returnSecureToken: true }
         );
-        console.log('getIdToken', response.data);
         return response.data;
       } catch (error) {
         console.error('Error fetching idToken:', error);
@@ -41,11 +39,6 @@ export function useUserService(): UserServiceType {
         const newRefreshToken = response.data.refresh_token;
         const newExpiresIn = Number(response.data.expires_in) * 1000;
         const newExpiresAt = new Date().getTime() + newExpiresIn;
-        console.log('getIdTokenWithRefreshToken', {
-          idToken: newIdToken,
-          expiresAt: newExpiresAt,
-          refreshToken: newRefreshToken,
-        });
         return {
           idToken: newIdToken,
           expiresAt: newExpiresAt,

@@ -19,13 +19,11 @@ export function useListStore(): ListStoreType {
       ));
     },
     addTask: (task: Task) => {
-      console.log('addTask', task);
       setLists(lists.map(list =>
         list.id === task.listId
           ? { ...list, tasks: [...list.tasks, task] }
           : list
       ));
-      console.log('lists', lists);
     },
     removeTask: (listId: string, taskId: string) => {
       setLists(lists.map(list =>

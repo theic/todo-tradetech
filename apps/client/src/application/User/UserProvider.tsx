@@ -24,7 +24,6 @@ export const UserProvider: FC<{ children: React.ReactNode }> = ({ children }) =>
   const userService = useUserService();
 
   const authenticate = async () => {
-    console.log('Authenticating');
     setIsLoading(true);
     try {
       const customToken = await userService.createUser();
@@ -43,7 +42,6 @@ export const UserProvider: FC<{ children: React.ReactNode }> = ({ children }) =>
   };
 
   const initializeUser = async () => {
-    console.log('Initializing user');
     try {
       const cachedUser = userStore.loadUser();
       if (!cachedUser) {
@@ -52,7 +50,6 @@ export const UserProvider: FC<{ children: React.ReactNode }> = ({ children }) =>
       if (cachedUser && cachedUser.expiresAt && isTokenExpired(cachedUser.expiresAt)) {
         await refreshIdToken();
       } else {
-        console.log('Setting user from cache', cachedUser);
         userStore.saveUser(cachedUser);
       }
     } catch (error) {
@@ -62,7 +59,6 @@ export const UserProvider: FC<{ children: React.ReactNode }> = ({ children }) =>
   }
 
   const refreshIdToken = async () => {
-    console.log('Refreshing token');
     try {
       const cachedUser = userStore.loadUser();
       if (!cachedUser) {
@@ -84,7 +80,6 @@ export const UserProvider: FC<{ children: React.ReactNode }> = ({ children }) =>
     if (!expiresAt) {
       return true;
     }
-    console.log('Checking if token is expired', new Date().getTime() >= expiresAt);
     return new Date().getTime() >= expiresAt;
   };
 
@@ -100,7 +95,6 @@ export const UserProvider: FC<{ children: React.ReactNode }> = ({ children }) =>
   useEffect(() => {
     const getToken = async () => {
       const user = userStore.loadUser();
-      console.log('Getting token', user);
       if (isTokenExpired(user?.expiresAt)) {
         await refreshIdToken();
       }
