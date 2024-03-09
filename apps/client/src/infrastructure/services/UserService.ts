@@ -2,9 +2,9 @@ import axios from 'axios';
 import {BaseService} from './BaseService';
 import { UserServiceType } from '../../application/User/UserServiceType';
 
-const signInWithCustomTokenUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken';
-const tokenUrl = 'https://securetoken.googleapis.com/v1/token';
-const apiKey = 'YOUR_API_KEY';
+const signInWithCustomTokenUrl = process.env.GOOGLE_CUSTOM_TOKEN_URL;
+const tokenUrl = process.env.GOOGLE_TOKEN_URL;
+const apiKey = process.env.FIREBASE_API_KEY;
 
 export function useUserService(): UserServiceType {
   return {
