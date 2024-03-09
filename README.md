@@ -15,6 +15,7 @@ This application serves as a showcase of a simple TODO list management system.
 - TypeScript (version 4 or higher)
 - Inversify (version 6 or higher)
 - Cloud Firestore
+- React.js
 
 ### Running the Application
 

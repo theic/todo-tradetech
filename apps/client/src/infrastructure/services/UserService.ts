@@ -2,9 +2,13 @@ import axios from 'axios';
 import {BaseService} from './BaseService';
 import { UserServiceType } from '../../application/User/UserServiceType';
 
-const signInWithCustomTokenUrl = process.env.GOOGLE_CUSTOM_TOKEN_URL;
-const tokenUrl = process.env.GOOGLE_TOKEN_URL;
-const apiKey = process.env.FIREBASE_API_KEY;
+const signInWithCustomTokenUrl = process.env.REACT_APP_GOOGLE_CUSTOM_TOKEN_URL;
+const tokenUrl = process.env.REACT_APP_GOOGLE_TOKEN_URL;
+const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
+
+console.log('signInWithCustomTokenUrl', signInWithCustomTokenUrl);
+console.log('tokenUrl', tokenUrl);
+console.log('apiKey', apiKey);
 
 export function useUserService(): UserServiceType {
   return {
