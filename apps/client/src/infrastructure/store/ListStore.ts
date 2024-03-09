@@ -10,7 +10,7 @@ export function useListStore(): ListStoreType {
     setLists,
     getLists: () => lists,
     addList: (list: List) => {
-      setLists([...lists, list]);
+      setLists([list, ...lists]);
     },
     removeList: (listId: string) => {
       setLists(lists.filter(list => list.id !== listId));

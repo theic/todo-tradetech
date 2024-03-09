@@ -37,6 +37,7 @@ export class FirestoreListRepository implements ListRepository {
     const listsSnap = await this.db
       .collection('lists')
       .where('userId', '==', userId)
+      .orderBy('createdAt', 'desc')
       .get();
     const lists: List[] = [];
 
