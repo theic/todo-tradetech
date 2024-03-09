@@ -6,10 +6,6 @@ const signInWithCustomTokenUrl = process.env.REACT_APP_GOOGLE_CUSTOM_TOKEN_URL;
 const tokenUrl = process.env.REACT_APP_GOOGLE_TOKEN_URL;
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
 
-console.log('signInWithCustomTokenUrl', signInWithCustomTokenUrl);
-console.log('tokenUrl', tokenUrl);
-console.log('apiKey', apiKey);
-
 export function useUserService(): UserServiceType {
   return {
     createUser: async () => {

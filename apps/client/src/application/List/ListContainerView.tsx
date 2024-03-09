@@ -25,7 +25,6 @@ export function ListContainerView() {
 
   useEffect(() => {
     if (user?.idToken) {
-      
       listService.getLists().then((lists) => {
         lists.forEach((list) => addList(list));
       });
@@ -33,10 +32,15 @@ export function ListContainerView() {
   }, [user?.idToken])
 
   async function handleCreateList() {
+    setNewListTitle('');
     setIsLoading(true);
-    const newList = await listService.createList({ title: newListTitle });
-    addList(newList);
-    setIsLoading(false);
+    try {
+      const newList = await listService.createList({ title: newListTitle });
+      addList(newList);
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   async function handleDeleteList(listId: string) {
@@ -58,12 +62,16 @@ export function ListContainerView() {
     description: string,
   ) {
     setIsLoading(true);
-    const task = await taskService.createTask({
-      listId,
-      description,
-    });
-    addTask(task);
-    setIsLoading(false);
+    try {
+      const task = await taskService.createTask({
+        listId,
+        description,
+      });
+      addTask(task);
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   async function handleToggleTask(listId: string, taskId: string) {
